@@ -1,26 +1,24 @@
 import React, {useState} from 'react'
 import { StyleSheet, SafeAreaView, FlatList, Text, View, Image } from 'react-native';
 import testData from '../../testData';
+import { Dimensions } from 'react-native';
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
-
-
-export default function Home() {
+export default function MovieList() {
     const [data, setData] = useState(testData);
 
 
-    const renderItem = ({ item }) => (
-      <>
-      
+    const renderItem = ({ item }) => (  
       <Image source={{ uri: item.image }} style={{ width: 400, height: 400 }}/>
-      </>
     );
 
     return (
-        <View>
-            <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <SafeAreaView>
                 <FlatList
-                style={styles.carousel}
+                style={{backgroundColor: 'blue'}}
                 horizontal
                 data={testData}
                 renderItem={renderItem}
@@ -33,8 +31,12 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
+        alignSelf: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
+        
     },
+    carousel: {
+       
+    }
 })
